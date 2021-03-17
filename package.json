@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
+    "prettier": "prettier --write \"**/*.{js,css,scss,less,md,ts,html,component.html}\"",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -56,7 +56,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,css,scss,less,md,ts,html,component.html}": [
+    "*.{js,css,scss,less,md,ts,html,component.html}": [
       "prettier --write"
     ]
   }
