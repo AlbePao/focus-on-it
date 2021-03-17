@@ -1,0 +1,17 @@
+.toolbar-button {
+  display: block;
+}
+
+.toolbar-icon {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .toolbar-button {
+    display: none;
+  }
+
+  .toolbar-icon {
+    display: block;
+  }
+}
