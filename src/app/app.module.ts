@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,18 +8,15 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToolbarButtonComponent } from './components/toolbar-button/toolbar-button.component';
-import { HomeComponent } from './views/home/home.component';
-import { InfoComponent } from './views/info/info.component';
-import { SettingsComponent } from './views/settings/settings.component';
 
+// TODO: add ngx-translate
 @NgModule({
-  declarations: [AppComponent, HomeComponent, InfoComponent, SettingsComponent, ToolbarButtonComponent],
+  declarations: [AppComponent, ToolbarButtonComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatCardModule,
     MatIconModule,
     MatToolbarModule,
     RouterModule,

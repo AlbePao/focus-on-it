@@ -1,21 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './views/home/home.component';
-import { InfoComponent } from './views/info/info.component';
-import { SettingsComponent } from './views/settings/settings.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    loadChildren: () => import('./views/home/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'info',
-    component: InfoComponent,
+    loadChildren: () => import('./views/info/info.module').then((m) => m.InfoModule),
   },
   {
     path: 'settings',
-    component: SettingsComponent,
+    loadChildren: () => import('./views/settings/settings.module').then((m) => m.SettingsModule),
   },
   { path: '**', redirectTo: '' },
 ];
