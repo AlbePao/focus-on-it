@@ -8,6 +8,14 @@
   right: 0;
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    flex: 1 0 auto;
+    margin-top: 32px;
+    overflow: hidden;
+  }
 }
 
 .mat-toolbar {
