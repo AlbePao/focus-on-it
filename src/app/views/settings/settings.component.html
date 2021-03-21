@@ -1,1 +1,41 @@
-<p>settings works!</p>
+<main class="container">
+  <div class="setting">
+    <p class="label">Work Duration</p>
+    <mat-slider class="full-width" min="0" max="90" step="1" value="25" thumbLabel tickInterval="5"></mat-slider>
+  </div>
+  <div class="setting">
+    <p class="label">Short Break</p>
+    <mat-slider class="full-width" min="0" max="30" step="1" value="5" thumbLabel tickInterval="5"></mat-slider>
+  </div>
+  <div class="setting">
+    <p class="label">Long Break</p>
+    <mat-slider class="full-width" min="0" max="45" step="1" value="15" thumbLabel tickInterval="5"></mat-slider>
+  </div>
+  <div class="setting">
+    <p class="label">Rounds</p>
+    <mat-slider class="full-width" min="0" max="10" step="1" value="4" thumbLabel tickInterval="1"></mat-slider>
+  </div>
+
+  <mat-list>
+    <mat-list-item matRipple>
+      <div mat-line>Auto start next round</div>
+      <mat-slide-toggle></mat-slide-toggle>
+    </mat-list-item>
+    <mat-list-item matRipple>
+      <div mat-line>Timer in title</div>
+      <mat-slide-toggle></mat-slide-toggle>
+    </mat-list-item>
+    <mat-list-item matRipple>
+      <div mat-line>Notifications</div>
+      <mat-slide-toggle></mat-slide-toggle>
+    </mat-list-item>
+    <mat-list-item matRipple>
+      <div mat-line>Dark mode</div>
+      <mat-slide-toggle></mat-slide-toggle>
+    </mat-list-item>
+  </mat-list>
+
+  <div class="reset">
+    <button mat-raised-button color="accent">Reset settings</button>
+  </div>
+</main>

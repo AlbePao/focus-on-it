@@ -1,0 +1,30 @@
+.container {
+  max-width: 600px;
+  margin: 32px auto 0 auto;
+}
+
+.setting {
+  padding: 8px 8px 0 8px;
+}
+
+.label {
+  padding: 0 8px;
+  margin: 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.reset {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 16px;
+
+  @media (max-width: 600px) {
+    button {
+      width: 100%;
+    }
+  }
+}
