@@ -14,8 +14,8 @@ import { ToolbarButtonComponent } from './components/toolbar-button/toolbar-butt
   declarations: [AppComponent, ToolbarButtonComponent],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
