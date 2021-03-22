@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatRippleModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
@@ -12,8 +12,8 @@ import { SettingsComponent } from './settings.component';
   declarations: [SettingsComponent],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     MatButtonModule,
-    MatRippleModule,
     MatListModule,
     MatSlideToggleModule,
     MatSliderModule,

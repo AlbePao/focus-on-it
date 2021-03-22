@@ -33,7 +33,12 @@ export class SettingsService {
     return settings;
   }
 
+  getDefaultSettings(): Settings {
+    return this.defaultSettings;
+  }
+
   setSettings(settings: Settings): void {
+    // TODO: set timer in title, notifications and dark mode according to settings
     this.localStorageService.setItem(SETTINGS, settings);
   }
 }
