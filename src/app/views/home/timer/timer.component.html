@@ -1,0 +1,8 @@
+<div class="timer-container mat-display-4">
+  <div class="timer">
+    <countdown #cd [config]="countdownConfig" (event)="handleEvent($event)"></countdown>
+  </div>
+  <button mat-raised-button [color]="buttonColor" type="button" class="toggle-button" (click)="toggleTimer()">
+    {{ buttonLabel }}
+  </button>
+</div>
