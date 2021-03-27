@@ -1,13 +1,25 @@
 <div class="container">
-  <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="Work">
-      <span>Work</span>
-    </mat-tab>
-    <mat-tab label="Short break">
-      <span>Short break</span>
-    </mat-tab>
-    <mat-tab label="Long break">
-      <span>Long break</span>
-    </mat-tab>
-  </mat-tab-group>
+  <div class="timer-container">
+    <mat-progress-spinner
+      color="primary"
+      mode="determinate"
+      [value]="timerSpinnerValue"
+      [diameter]="320"
+      [strokeWidth]="10"
+    ></mat-progress-spinner>
+
+    <div class="timer-status mat-display-4">
+      <countdown #cd [config]="countdownConfig" (event)="timerChange($event)"></countdown>
+      <span class="timer-label mat-display-1">{{ currentTimerType }}</span>
+    </div>
+  </div>
+
+  <div class="timer-buttons">
+    <button mat-fab color="accent" (click)="stopTimer()" [disabled]="isStopButtonDisabled">
+      <mat-icon>stop</mat-icon>
+    </button>
+    <button mat-fab color="accent" (click)="toggleTimer()">
+      <mat-icon>{{ toggleIcon }}</mat-icon>
+    </button>
+  </div>
 </div>
