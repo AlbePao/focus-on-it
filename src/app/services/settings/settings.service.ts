@@ -10,10 +10,8 @@ const SETTINGS = 'SETTINGS';
 export class SettingsService {
   private defaultSettings: Settings = {
     workDuration: 25,
-    shortBreak: 5,
-    longBreak: 15,
+    breakDuration: 5,
     rounds: 4,
-    autoStartNextRoundEnabled: true,
     timerInTitleEnabled: true,
     notificationsEnabled: false,
     darkModeEnabled: false,

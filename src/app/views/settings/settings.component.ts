@@ -13,10 +13,8 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   form = this.fb.group({
     workDuration: [null],
-    shortBreak: [null],
-    longBreak: [null],
+    breakDuration: [null],
     rounds: [null],
-    autoStartNextRoundEnabled: [null],
     timerInTitleEnabled: [null],
     notificationsEnabled: [null],
     darkModeEnabled: [null],
