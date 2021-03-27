@@ -4,11 +4,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CountdownModule } from 'ngx-countdown';
-import { DialogTimerInProgressComponent } from './dialog-timer-in-progress/dialog-timer-in-progress.component';
+import { DialogAlertComponent } from './dialog-alert/dialog-alert.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 
 @NgModule({
-  declarations: [HomeComponent, DialogTimerInProgressComponent],
+  declarations: [HomeComponent, DialogAlertComponent],
 })
 export class HomeModule {}
