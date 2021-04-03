@@ -1,19 +1,19 @@
 <h1 mat-dialog-title *ngIf="data.title">{{ data.title }}</h1>
-<div mat-dialog-content>
-  <p>{{ data.description }}?</p>
-</div>
+<mat-dialog-content>
+  <p>{{ data.description }}</p>
+</mat-dialog-content>
 
 <ng-container *ngIf="data.cancelOrConfirm; then cancelOrConfirmActions; else confirmAction"></ng-container>
 
 <ng-template #cancelOrConfirmActions>
-  <div mat-dialog-actions>
+  <mat-dialog-actions align="end">
     <button mat-button [mat-dialog-close]="false">Cancel</button>
     <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Confirm</button>
-  </div>
+  </mat-dialog-actions>
 </ng-template>
 
 <ng-template #confirmAction>
-  <div mat-dialog-actions>
+  <mat-dialog-actions align="end">
     <button mat-button mat-dialog-close cdkFocusInitial>Ok</button>
-  </div>
+  </mat-dialog-actions>
 </ng-template>
