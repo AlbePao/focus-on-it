@@ -1,9 +1,12 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdown';
-import { Subscription } from 'rxjs';
+import { defer, iif, Observable, of, Subject, Subscription } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs/operators';
 import { SettingsService } from 'src/app/services/settings/settings.service';
+import { DialogAlertComponent } from './dialog-alert/dialog-alert.component';
 
 enum TimerType {
   WORK = 'Work',
@@ -28,7 +31,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   timerSpinnerValue = 100;
 
-  currentDuration = this.settings.workDuration;
   currentTimerType: TimerType = TimerType.WORK;
   currentTimerStatus: TimerStatus = TimerStatus.STOPPED;
   currentTimerRound = 0;
@@ -36,29 +38,50 @@ export class HomeComponent implements OnInit, OnDestroy {
   isStopButtonDisabled = true;
   toggleIcon = 'play_arrow';
 
-  routerSubscription$ = new Subscription();
+  // TODO: alert if NavigationStart while timer is running
+  // TODO: alert if browser tab is closed while timer is running
+  routeChangeInteraction$ = this.router.events.pipe();
+
+  timerStopAction$ = new Subject<void>();
+  timerStopInteraction$ = this.timerStopAction$.pipe(
+    switchMap(() =>
+      iif(() => this.currentTimerStatus === TimerStatus.RUNNING, this.openTimerInProgressDialog(), of(true)),
+    ),
+    filter((result) => !!result),
+    tap(() => this.stopTimer()),
+  );
+
+  timerCompletionAction$ = new Subject<void>();
+  timerCompletionInteraction$ = this.timerCompletionAction$.pipe(switchMap(() => this.openTimerCompletionDialog()));
+
+  routeChangeSubscription$ = new Subscription();
+  timerStopSubscrption$ = new Subscription();
+  timerCompletionSubscription$ = new Subscription();
 
   countdownConfig: CountdownConfig = {
     demand: true,
     format: 'mm:ss',
-    leftTime: this.currentDuration * 60,
+    leftTime: this.settings.workDuration * 60,
     notify: 0,
   };
 
   constructor(
+    private readonly dialog: MatDialog,
+    private readonly title: Title,
     private readonly router: Router,
     private readonly settingsService: SettingsService,
-    private readonly title: Title,
   ) {}
 
   ngOnInit(): void {
-    // TODO: alert if NavigationStart while timer is running
-    // TODO: alert if browser tab is closed while timer is running
-    this.routerSubscription$ = this.router.events.subscribe();
+    this.routeChangeSubscription$ = this.routeChangeInteraction$.subscribe();
+    this.timerStopSubscrption$ = this.timerStopInteraction$.subscribe();
+    this.timerCompletionSubscription$ = this.timerCompletionInteraction$.subscribe();
   }
 
   ngOnDestroy(): void {
-    this.routerSubscription$.unsubscribe();
+    this.routeChangeSubscription$.unsubscribe();
+    this.timerStopSubscrption$.unsubscribe();
+    this.timerCompletionSubscription$.unsubscribe();
 
     if (this.settings.timerInTitleEnabled) {
       this.setTimerInTitle();
@@ -66,25 +89,41 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   timerChange(event: CountdownEvent): void {
-    console.log(event);
-    const secondsLeft = event.left / 1000;
-    this.timerSpinnerValue = (secondsLeft * 100) / (this.currentDuration * 60);
+    const { text, action, left } = event;
+    const { workDuration, breakDuration, rounds } = this.settings;
 
     if (this.settings.timerInTitleEnabled) {
-      this.setTimerInTitle(event.text);
+      this.setTimerInTitle(text);
     }
 
-    if (event.action === 'done') {
+    if (action === 'restart' && this.currentTimerRound < rounds) {
+      this.toggleTimer();
+    } else if (action === 'done') {
+      // TODO: handle notification and play timer ring
+      this.stopTimer();
+
       if (this.currentTimerType === TimerType.WORK) {
         this.currentTimerRound += 1;
+
+        if (this.currentTimerRound >= rounds) {
+          // TODO: reset timerType to WORK and leftTime
+          this.timerCompletionAction$.next();
+        } else {
+          this.countdownConfig = { ...this.countdownConfig, leftTime: breakDuration * 60 };
+          this.currentTimerType = TimerType.BREAK;
+        }
+      } else {
+        this.countdownConfig = { ...this.countdownConfig, leftTime: workDuration * 60 };
+        this.currentTimerType = TimerType.WORK;
       }
-      // TODO: start next timer if roundsCounter < rounds
-      // TODO: handle notification
+    } else {
+      const currentDuration = (this.currentTimerType === TimerType.WORK ? workDuration : breakDuration) * 60;
+      const secondsLeft = left / 1000;
+      this.timerSpinnerValue = (secondsLeft * 100) / currentDuration;
     }
   }
 
   stopTimer(): void {
-    // TODO: open confirm dialog
     this.countdown.stop();
     this.countdown.restart();
     this.currentTimerStatus = TimerStatus.STOPPED;
@@ -111,5 +150,35 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   setTimerInTitle(duration?: string): void {
     this.title.setTitle(`${duration ? duration + ' - ' : ''}Focus on It`);
+  }
+
+  openTimerInProgressDialog(): Observable<boolean> {
+    return defer(() =>
+      this.dialog
+        .open(DialogAlertComponent, {
+          disableClose: true,
+          width: 'auto',
+          height: 'auto',
+          data: {
+            title: 'Warning',
+            description: 'Are you sure you want to stop timer? All your progress will be lost',
+            cancelOrConfirm: true,
+          },
+        })
+        .afterClosed(),
+    );
+  }
+
+  openTimerCompletionDialog(): Observable<void> {
+    return defer(() =>
+      this.dialog
+        .open(DialogAlertComponent, {
+          disableClose: true,
+          width: 'auto',
+          height: 'auto',
+          data: { description: 'Work completed' },
+        })
+        .afterClosed(),
+    );
   }
 }

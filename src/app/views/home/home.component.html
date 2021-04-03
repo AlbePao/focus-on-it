@@ -15,7 +15,7 @@
   </div>
 
   <div class="timer-buttons">
-    <button mat-fab color="accent" (click)="stopTimer()" [disabled]="isStopButtonDisabled">
+    <button mat-fab color="accent" (click)="timerStopAction$.next()" [disabled]="isStopButtonDisabled">
       <mat-icon>stop</mat-icon>
     </button>
     <button mat-fab color="accent" (click)="toggleTimer()">
