@@ -1,19 +1,18 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
-import { Router } from '@angular/router';
 import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdown';
 import { defer, iif, Observable, of, Subject, Subscription } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
 import { SettingsService } from 'src/app/services/settings/settings.service';
 import { DialogAlertComponent } from './dialog-alert/dialog-alert.component';
 
-enum TimerType {
+export enum TimerType {
   WORK = 'Work',
   BREAK = 'Break',
 }
 
-enum TimerStatus {
+export enum TimerStatus {
   RUNNING,
   PAUSED,
   STOPPED,
@@ -38,10 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isStopButtonDisabled = true;
   toggleIcon = 'play_arrow';
 
-  // TODO: alert if NavigationStart while timer is running
   // TODO: alert if browser tab is closed while timer is running
-  routeChangeInteraction$ = this.router.events.pipe();
-
   timerStopAction$ = new Subject<void>();
   timerStopInteraction$ = this.timerStopAction$.pipe(
     switchMap(() =>
@@ -54,7 +50,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   timerCompletionAction$ = new Subject<void>();
   timerCompletionInteraction$ = this.timerCompletionAction$.pipe(switchMap(() => this.openTimerCompletionDialog()));
 
-  routeChangeSubscription$ = new Subscription();
   timerStopSubscrption$ = new Subscription();
   timerCompletionSubscription$ = new Subscription();
 
@@ -68,18 +63,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private readonly dialog: MatDialog,
     private readonly title: Title,
-    private readonly router: Router,
     private readonly settingsService: SettingsService,
   ) {}
 
   ngOnInit(): void {
-    this.routeChangeSubscription$ = this.routeChangeInteraction$.subscribe();
     this.timerStopSubscrption$ = this.timerStopInteraction$.subscribe();
     this.timerCompletionSubscription$ = this.timerCompletionInteraction$.subscribe();
   }
 
   ngOnDestroy(): void {
-    this.routeChangeSubscription$.unsubscribe();
     this.timerStopSubscrption$.unsubscribe();
     this.timerCompletionSubscription$.unsubscribe();
 
