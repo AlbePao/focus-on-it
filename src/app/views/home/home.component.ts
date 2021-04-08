@@ -149,8 +149,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.dialog
         .open(DialogAlertComponent, {
           disableClose: true,
-          width: 'auto',
+          width: '50%',
           height: 'auto',
+          maxWidth: '40rem',
           data: {
             title: 'Warning',
             description: 'Are you sure you want to stop timer? All your progress will be lost',
@@ -166,8 +167,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.dialog
         .open(DialogAlertComponent, {
           disableClose: true,
-          width: 'auto',
+          width: '50%',
           height: 'auto',
+          maxWidth: '20rem',
           data: { description: 'Work completed' },
         })
         .afterClosed(),
