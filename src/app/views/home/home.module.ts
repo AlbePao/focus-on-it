@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CountdownModule } from 'ngx-countdown';
 import { DialogAlertComponent } from './dialog-alert/dialog-alert.component';
+import { CanDeactivateHomeGuard } from './guards/can-deactivate-home.guard';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 
@@ -20,5 +21,6 @@ import { HomeComponent } from './home.component';
     MatProgressSpinnerModule,
     CountdownModule,
   ],
+  providers: [CanDeactivateHomeGuard],
 })
 export class HomeModule {}
