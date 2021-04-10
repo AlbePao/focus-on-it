@@ -45,7 +45,7 @@ export class AppComponent implements OnInit {
 
   private registerIcons(): void {
     Object.keys(AppIcons).forEach((icon) => {
-      this.matIconRegistry.addSvgIcon(icon, this.sanitizer.bypassSecurityTrustResourceUrl(`assets/${icon}.svg`));
+      this.matIconRegistry.addSvgIcon(icon, this.sanitizer.bypassSecurityTrustResourceUrl(`assets/svg/${icon}.svg`));
     });
   }
 }
