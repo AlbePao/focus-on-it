@@ -16,10 +16,10 @@
 
   <div class="timer-buttons">
     <button mat-fab color="accent" (click)="timerStopAction$.next()" [disabled]="isStopButtonDisabled">
-      <mat-icon>stop</mat-icon>
+      <mat-icon svgIcon="stop"></mat-icon>
     </button>
     <button mat-fab color="accent" (click)="toggleTimer()">
-      <mat-icon>{{ toggleIcon }}</mat-icon>
+      <mat-icon [svgIcon]="toggleIcon"></mat-icon>
     </button>
   </div>
 </div>
