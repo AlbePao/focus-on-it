@@ -36,7 +36,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   isStopButtonDisabled = true;
   toggleIcon = 'play_arrow';
 
-  // TODO: alert if browser tab is closed while timer is running
+  timerAlarm = new Audio('../../../assets/alarm.mp3');
+
   timerStopAction$ = new Subject<void>();
   timerStopInteraction$ = this.timerStopAction$.pipe(
     switchMap(() =>
@@ -77,11 +78,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.timerStopSubscrption$ = this.timerStopInteraction$.subscribe();
     this.timerCompletionSubscription$ = this.timerCompletionInteraction$.subscribe();
+    this.timerAlarm.load();
   }
 
   ngOnDestroy(): void {
     this.timerStopSubscrption$.unsubscribe();
     this.timerCompletionSubscription$.unsubscribe();
+    this.timerAlarm.pause();
 
     if (this.settings.timerInTitleEnabled) {
       this.setTimerInTitle();
@@ -90,17 +93,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   timerChange(event: CountdownEvent): void {
     const { text, action, left } = event;
-    const { workDuration, breakDuration, rounds } = this.settings;
+    const { workDuration, breakDuration, rounds, timerInTitleEnabled } = this.settings;
 
-    if (this.settings.timerInTitleEnabled) {
+    if (timerInTitleEnabled) {
       this.setTimerInTitle(text);
     }
 
     if (action === 'restart' && this.currentRound < rounds) {
       this.toggleTimer();
     } else if (action === 'done') {
-      // TODO: handle notification and play timer ring
       this.stopTimer();
+      this.timerAlarm.play();
 
       if (this.currentTimerType === TimerType.WORK) {
         this.currentRound += 1;
