@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   currentTimerType: TimerType = TimerType.WORK;
   currentTimerStatus: TimerStatus = TimerStatus.STOPPED;
-  currentTimerRound = 0;
+  currentRound = 0;
   currentSpinnerValue = 100;
 
   isStopButtonDisabled = true;
@@ -96,18 +96,20 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.setTimerInTitle(text);
     }
 
-    if (action === 'restart' && this.currentTimerRound < rounds) {
+    if (action === 'restart' && this.currentRound < rounds) {
       this.toggleTimer();
     } else if (action === 'done') {
       // TODO: handle notification and play timer ring
       this.stopTimer();
 
       if (this.currentTimerType === TimerType.WORK) {
-        this.currentTimerRound += 1;
+        this.currentRound += 1;
 
-        if (this.currentTimerRound >= rounds) {
-          // TODO: reset timerType to WORK and leftTime
+        if (this.currentRound >= rounds) {
           this.timerCompletionAction$.next();
+
+          this.countdownConfig = { ...this.countdownConfig, leftTime: workDuration * 60 };
+          this.currentTimerType = TimerType.WORK;
         } else {
           this.countdownConfig = { ...this.countdownConfig, leftTime: breakDuration * 60 };
           this.currentTimerType = TimerType.BREAK;
