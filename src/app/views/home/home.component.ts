@@ -28,11 +28,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   settings = this.settingsService.getSettings();
 
-  timerSpinnerValue = 100;
-
   currentTimerType: TimerType = TimerType.WORK;
   currentTimerStatus: TimerStatus = TimerStatus.STOPPED;
   currentTimerRound = 0;
+  currentSpinnerValue = 100;
 
   isStopButtonDisabled = true;
   toggleIcon = 'play_arrow';
@@ -111,7 +110,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       const currentDuration = (this.currentTimerType === TimerType.WORK ? workDuration : breakDuration) * 60;
       const secondsLeft = left / 1000;
-      this.timerSpinnerValue = (secondsLeft * 100) / currentDuration;
+      this.currentSpinnerValue = (secondsLeft * 100) / currentDuration;
     }
   }
 
