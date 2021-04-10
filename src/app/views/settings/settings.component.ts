@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { SettingsService } from 'src/app/services/settings/settings.service';
+import { ThemeService } from 'src/app/services/theme/theme.service';
 
 @Component({
   selector: 'app-settings',
@@ -22,12 +23,19 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   settings = this.settingsService.getSettings();
 
-  constructor(private readonly fb: FormBuilder, private readonly settingsService: SettingsService) {}
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly settingsService: SettingsService,
+    private readonly themeService: ThemeService,
+  ) {}
 
   ngOnInit(): void {
     this.form.patchValue(this.settings, { emitEvent: false });
 
-    this.formSubscription$ = this.form.valueChanges.subscribe((settings) => this.settingsService.setSettings(settings));
+    this.formSubscription$ = this.form.valueChanges.subscribe((settings) => {
+      this.settingsService.setSettings(settings);
+      this.themeService.setDarkMode(settings.darkModeEnabled);
+    });
   }
 
   ngOnDestroy(): void {

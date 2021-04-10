@@ -1,4 +1,4 @@
-<div class="theme">
+<div class="theme mat-app-background" [class.dark-theme]="isDarkModeEnabled$ | async">
   <mat-toolbar color="primary" class="mat-elevation-z6">
     <mat-toolbar-row>
       <a routerLink="/" aria-label="Focus On It">

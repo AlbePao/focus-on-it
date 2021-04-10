@@ -4,6 +4,8 @@ import { DomSanitizer } from '@angular/platform-browser';
 import browser from 'browser-detect';
 import { AnimationsService } from './services/animations/animations.service';
 import { routeAnimations } from './services/animations/route.animations';
+import { SettingsService } from './services/settings/settings.service';
+import { ThemeService } from './services/theme/theme.service';
 
 enum AppIcons {
   info,
@@ -20,15 +22,22 @@ enum AppIcons {
   animations: [routeAnimations],
 })
 export class AppComponent implements OnInit {
+  settings = this.settingsService.getSettings();
+  isDarkModeEnabled$ = this.themeService.getDarkModeEnabled();
+
   constructor(
-    private readonly animationsService: AnimationsService,
     private readonly matIconRegistry: MatIconRegistry,
     private readonly sanitizer: DomSanitizer,
+    private readonly animationsService: AnimationsService,
+    private readonly settingsService: SettingsService,
+    private readonly themeService: ThemeService,
   ) {
     this.registerIcons();
   }
 
   ngOnInit(): void {
+    this.themeService.setDarkMode(this.settings.darkModeEnabled);
+
     const isIEorEdgeOrSafari = ['ie', 'edge', 'safari'].includes(browser().name ?? '');
 
     this.animationsService.updateRouteAnimationType(!isIEorEdgeOrSafari, true);
