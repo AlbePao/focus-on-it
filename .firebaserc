@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "focus-on-it": {
+      "hosting": {
+        "focus-on-it": [
+          "focus-on-it"
+        ]
+      }
+    }
+  }
+}

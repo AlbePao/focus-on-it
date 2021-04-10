@@ -126,6 +126,10 @@
               "devServerTarget": "focus-on-it:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }
