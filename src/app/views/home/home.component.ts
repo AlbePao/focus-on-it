@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdown';
@@ -58,6 +58,15 @@ export class HomeComponent implements OnInit, OnDestroy {
     leftTime: this.settings.workDuration * 60,
     notify: 0,
   };
+
+  @HostListener('window:beforeunload', ['$event'])
+  onWindowClose(): boolean {
+    if (this.currentTimerStatus === TimerStatus.RUNNING) {
+      return false;
+    }
+
+    return true;
+  }
 
   constructor(
     private readonly dialog: MatDialog,
