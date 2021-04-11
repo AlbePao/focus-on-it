@@ -4,19 +4,9 @@ import { Title } from '@angular/platform-browser';
 import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdown';
 import { defer, iif, Observable, of, Subject, Subscription } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
+import { TimerStatus, TimerType } from 'src/app/interfaces/timer';
 import { SettingsService } from 'src/app/services/settings/settings.service';
 import { DialogAlertComponent } from './dialog-alert/dialog-alert.component';
-
-export enum TimerType {
-  WORK = 'Work',
-  BREAK = 'Break',
-}
-
-export enum TimerStatus {
-  RUNNING,
-  PAUSED,
-  STOPPED,
-}
 
 @Component({
   selector: 'app-home',
