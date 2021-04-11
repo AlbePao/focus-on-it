@@ -1,12 +1,9 @@
 <div class="theme mat-app-background" [class.dark-theme]="isDarkModeEnabled$ | async">
   <mat-toolbar color="primary" class="mat-elevation-z6">
     <mat-toolbar-row>
-      <a routerLink="/" aria-label="Focus On It">
-        <!--
-          TODO: add logo image
-          <img src="images/logo.svg" alt="Phocus On It" />
-        -->
-        Focus on It
+      <a mat-button routerLink="/" aria-label="Focus on It">
+        <img src="assets/logo.webp" width="30" height="30" alt="Focus on It" />
+        Focus on it
       </a>
 
       <span class="spacer"></span>
