@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import browser from 'browser-detect';
+import { AppIcons } from './interfaces/app-icons';
 import { AnimationsService } from './services/animations/animations.service';
 import { routeAnimations } from './services/animations/route.animations';
 import { SettingsService } from './services/settings/settings.service';
