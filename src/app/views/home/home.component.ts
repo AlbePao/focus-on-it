@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   timerStopAction$ = new Subject<void>();
   timerStopInteraction$ = this.timerStopAction$.pipe(
     switchMap(() =>
-      iif(() => this.currentTimerStatus === TimerStatus.RUNNING, this.openTimerInProgressDialog(), of(true)),
+      iif(() => this.currentTimerStatus !== TimerStatus.STOPPED, this.openTimerInProgressDialog(), of(true)),
     ),
     filter((result) => !!result),
     tap(() => this.stopTimer()),
