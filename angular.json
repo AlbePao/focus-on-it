@@ -30,6 +30,8 @@
             "tsConfig": "tsconfig.app.json",
             "aot": true,
             "assets": [
+              "src/robots.txt",
+              "src/apple-touch-icon.png",
               "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest"
@@ -96,6 +98,8 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
+              "src/robots.txt",
+              "src/apple-touch-icon.png",
               "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest"
