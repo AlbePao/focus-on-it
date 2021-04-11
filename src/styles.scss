@@ -3,31 +3,35 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
-$focus-on-it-primary: mat-palette($mat-teal, 500, 100, 900);
-$focus-on-it-accent: mat-palette($mat-pink, A200, A100, A400);
-$focus-on-it-warn: mat-palette($mat-red);
-
-$focus-on-it-light-theme: mat-light-theme(
-  (
-    color: (
-      primary: $focus-on-it-primary,
-      accent: $focus-on-it-accent,
-      warn: $focus-on-it-warn,
-    ),
-  )
+$mat-primary-scheme: (
+  100: #ffd9d3,
+  500: #be1c00,
+  700: #931600,
+  contrast: (
+    100: rgba(0, 0, 0, 0.87),
+    500: #ffffff,
+    700: #ffffff,
+  ),
 );
 
-$focus-on-it-dark-theme: mat-dark-theme(
-  (
-    color: (
-      primary: $focus-on-it-primary,
-      accent: $focus-on-it-accent,
-      warn: $focus-on-it-warn,
-    ),
-  )
+$mat-accent-scheme: (
+  100: #ffe57f,
+  500: #ffc400,
+  700: #f1b900,
+  contrast: (
+    100: rgba(0, 0, 0, 0.87),
+    500: rgba(0, 0, 0, 0.87),
+    700: #ffffff,
+  ),
 );
 
-@include angular-material-theme($focus-on-it-light-theme);
+$mat-primary-palette: mat-palette($mat-primary-scheme);
+$mat-accent-palette: mat-palette($mat-accent-scheme);
+
+$app-light-theme: mat-light-theme($mat-primary-palette, $mat-accent-palette);
+$app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
+
+@include angular-material-theme($app-light-theme);
 
 html,
 body {
@@ -39,5 +43,5 @@ body {
 }
 
 .dark-theme {
-  @include angular-material-color($focus-on-it-dark-theme);
+  @include angular-material-theme($app-dark-theme);
 }
