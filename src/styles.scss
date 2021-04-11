@@ -36,6 +36,7 @@ $app-dark-theme: mat-dark-theme($mat-primary-palette, $mat-accent-palette);
 html,
 body {
   height: 100%;
+  overflow: hidden;
 }
 body {
   margin: 0;
