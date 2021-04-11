@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isStopButtonDisabled = true;
   toggleIcon = 'play_arrow';
 
-  timerAlarm = new Audio('../../../assets/alarm.mp3');
+  timerAlarm = new Audio();
 
   timerStopAction$ = new Subject<void>();
   timerStopInteraction$ = this.timerStopAction$.pipe(
@@ -68,13 +68,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.timerStopSubscrption$ = this.timerStopInteraction$.subscribe();
     this.timerCompletionSubscription$ = this.timerCompletionInteraction$.subscribe();
-    this.timerAlarm.load();
+    this.timerAlarm.play();
   }
 
   ngOnDestroy(): void {
     this.timerStopSubscrption$.unsubscribe();
     this.timerCompletionSubscription$.unsubscribe();
-    this.timerAlarm.pause();
 
     if (this.settings.timerInTitleEnabled) {
       this.setTimerInTitle();
@@ -93,6 +92,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       this.toggleTimer();
     } else if (action === 'done') {
       this.stopTimer();
+
+      this.timerAlarm.src = '../../../assets/alarm.mp3';
       this.timerAlarm.play();
 
       if (this.currentTimerType === TimerType.WORK) {
