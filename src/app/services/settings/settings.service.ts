@@ -14,7 +14,6 @@ export class SettingsService {
     breakDuration: 5,
     rounds: 4,
     timerInTitleEnabled: true,
-    notificationsEnabled: false,
     darkModeEnabled: false,
   };
 

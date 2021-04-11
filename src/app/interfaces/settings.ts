@@ -3,6 +3,5 @@ export interface Settings {
   breakDuration: number;
   rounds: number;
   timerInTitleEnabled: boolean;
-  notificationsEnabled: boolean;
   darkModeEnabled: boolean;
 }

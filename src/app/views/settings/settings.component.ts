@@ -16,7 +16,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
     breakDuration: [null],
     rounds: [null],
     timerInTitleEnabled: [null],
-    notificationsEnabled: [null],
     darkModeEnabled: [null],
   });
 
