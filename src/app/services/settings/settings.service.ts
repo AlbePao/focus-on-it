@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Settings } from 'src/app/interfaces/settings';
 import { LocalStorageService } from '../local-storage/local-storage.service';
+import { ThemeService } from '../theme/theme.service';
 
 const SETTINGS = 'SETTINGS';
 
@@ -17,7 +18,7 @@ export class SettingsService {
     darkModeEnabled: false,
   };
 
-  constructor(private readonly localStorageService: LocalStorageService) {}
+  constructor(private readonly localStorageService: LocalStorageService, private readonly themeService: ThemeService) {}
 
   getSettings(): Settings {
     const settings = this.localStorageService.getItem(SETTINGS) as Settings;
@@ -36,7 +37,7 @@ export class SettingsService {
   }
 
   setSettings(settings: Settings): void {
-    // TODO: set timer in title, notifications and dark mode according to settings
+    this.themeService.setDarkMode(settings.darkModeEnabled);
     this.localStorageService.setItem(SETTINGS, settings);
   }
 }
