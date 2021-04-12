@@ -6,12 +6,12 @@
       [value]="currentSpinnerValue"
       [diameter]="320"
       [strokeWidth]="10"
-      aria-label="Timer progress"
+      [attr.aria-label]="'HOME.TIMER_PROGRESS' | translate"
     ></mat-progress-spinner>
 
     <div class="timer-status mat-display-4">
       <countdown #cd [config]="countdownConfig" (event)="timerChange($event)"></countdown>
-      <span class="timer-label mat-display-1">{{ currentTimerType }}</span>
+      <span class="timer-label mat-display-1">{{ currentTimerType | translate }}</span>
     </div>
   </div>
 
@@ -21,11 +21,11 @@
       color="accent"
       (click)="timerStopAction$.next()"
       [disabled]="isStopButtonDisabled"
-      aria-label="Stop"
+      [attr.aria-label]="'HOME.STOP' | translate"
     >
       <mat-icon svgIcon="stop"></mat-icon>
     </button>
-    <button mat-fab color="accent" (click)="toggleTimer()" aria-label="Toggle timer">
+    <button mat-fab color="accent" (click)="toggleTimer()" [attr.aria-label]="'HOME.TOGGLE_TIMER' | translate">
       <mat-icon [svgIcon]="toggleIcon"></mat-icon>
     </button>
   </div>

@@ -1,7 +1,7 @@
 <div class="container">
   <form [formGroup]="form">
     <div class="setting">
-      <p class="label">Work Duration</p>
+      <p class="label">{{ 'SETTINGS.WORK_DURATION' | translate }}</p>
       <mat-slider
         min="0"
         max="90"
@@ -9,11 +9,11 @@
         thumbLabel
         tickInterval="5"
         formControlName="workDuration"
-        aria-label="Work Duration"
+        [attr.aria-label]="'SETTINGS.WORK_DURATION' | translate"
       ></mat-slider>
     </div>
     <div class="setting">
-      <p class="label">Break Duration</p>
+      <p class="label">{{ 'SETTINGS.BREAK_DURATION' | translate }}</p>
       <mat-slider
         min="0"
         max="30"
@@ -21,11 +21,11 @@
         thumbLabel
         tickInterval="5"
         formControlName="breakDuration"
-        aria-label="Break Duration"
+        [attr.aria-label]="'SETTINGS.BREAK_DURATION' | translate"
       ></mat-slider>
     </div>
     <div class="setting">
-      <p class="label">Rounds</p>
+      <p class="label">{{ 'SETTINGS.ROUNDS' | translate }}</p>
       <mat-slider
         min="0"
         max="10"
@@ -33,23 +33,31 @@
         thumbLabel
         tickInterval="1"
         formControlName="rounds"
-        aria-label="Rounds"
+        [attr.aria-label]="'SETTINGS.ROUNDS' | translate"
       ></mat-slider>
     </div>
 
     <mat-list>
       <mat-list-item>
-        <div mat-line>Enable timer in title</div>
-        <mat-slide-toggle formControlName="timerInTitleEnabled" aria-label="Enable timer in title"></mat-slide-toggle>
+        <div mat-line>{{ 'SETTINGS.TIMER_IN_TITLE' | translate }}</div>
+        <mat-slide-toggle
+          formControlName="timerInTitleEnabled"
+          [attr.aria-label]="'SETTINGS.TIMER_IN_TITLE' | translate"
+        ></mat-slide-toggle>
       </mat-list-item>
       <mat-list-item>
-        <div mat-line>Enable dark mode</div>
-        <mat-slide-toggle formControlName="darkModeEnabled" aria-label="Enable dark mode"></mat-slide-toggle>
+        <div mat-line>{{ 'SETTINGS.DARK_MODE' | translate }}</div>
+        <mat-slide-toggle
+          formControlName="darkModeEnabled"
+          [attr.aria-label]="'SETTINGS.DARK_MODE' | translate"
+        ></mat-slide-toggle>
       </mat-list-item>
     </mat-list>
   </form>
 
   <div class="reset">
-    <button mat-raised-button color="accent" (click)="resetSettings()">Reset settings</button>
+    <button mat-raised-button color="accent" (click)="resetSettings()">
+      {{ 'SETTINGS.RESET_SETTINGS' | translate }}
+    </button>
   </div>
 </div>

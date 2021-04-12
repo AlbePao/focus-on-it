@@ -156,8 +156,8 @@ export class HomeComponent implements OnInit, OnDestroy {
           width: '20rem',
           height: 'auto',
           data: {
-            title: 'Warning',
-            description: 'Are you sure you want to stop timer? All your progress will be lost',
+            title: 'HOME.TIMER_IN_PROGRESS_TITLE',
+            description: 'HOME.TIMER_IN_PROGRESS_DESCRIPTION',
             cancelOrConfirm: true,
           },
         })
@@ -172,7 +172,7 @@ export class HomeComponent implements OnInit, OnDestroy {
           disableClose: true,
           width: '20rem',
           height: 'auto',
-          data: { description: 'Work completed' },
+          data: { description: 'HOME.WORK_COMPLETED' },
         })
         .afterClosed(),
     );

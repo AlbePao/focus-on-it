@@ -8,13 +8,17 @@
 
       <span class="spacer"></span>
 
-      <a mat-button class="toolbar-button" routerLink="info"><mat-icon svgIcon="info"></mat-icon> Info</a>
-      <a mat-button class="toolbar-button" routerLink="settings"><mat-icon svgIcon="settings"></mat-icon> Settings</a>
+      <a mat-button class="toolbar-button" routerLink="info">
+        <mat-icon svgIcon="info"></mat-icon> {{ 'COMMON.INFO' | translate }}
+      </a>
+      <a mat-button class="toolbar-button" routerLink="settings">
+        <mat-icon svgIcon="settings"></mat-icon> {{ 'COMMON.SETTINGS' | translate }}
+      </a>
 
-      <a mat-icon-button class="toolbar-icon" routerLink="info">
+      <a mat-icon-button class="toolbar-icon" routerLink="info" [attr.aria-label]="'COMMON.INFO' | translate">
         <mat-icon svgIcon="info"></mat-icon>
       </a>
-      <a mat-icon-button class="toolbar-icon" routerLink="settings">
+      <a mat-icon-button class="toolbar-icon" routerLink="settings" [attr.aria-label]="'COMMON.SETTINGS' | translate">
         <mat-icon svgIcon="settings"></mat-icon>
       </a>
     </mat-toolbar-row>

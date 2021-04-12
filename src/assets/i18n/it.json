@@ -1,0 +1,32 @@
+{
+  "COMMON": {
+    "INFO": "Info",
+    "SETTINGS": "Impostazioni"
+  },
+  "HOME": {
+    "TIMER_PROGRESS": "Avanzamento del timer",
+    "STOP": "Stop",
+    "TOGGLE_TIMER": "Attiva / Disattiva il timer",
+    "WORK": "Lavoro",
+    "BREAK": "Pausa",
+    "TIMER_IN_PROGRESS_TITLE": "Attenzione",
+    "TIMER_IN_PROGRESS_DESCRIPTION": "Vuoi veramente fermare il timer? Tutti i tuoi progressi andranno perduti",
+    "WORK_COMPLETED": "Lavoro completato",
+    "ALERT_DIALOG": {
+      "CANCEL": "Annulla",
+      "CONFIRM": "Conferma",
+      "OK": "Ok"
+    }
+  },
+  "INFO": {
+
+  },
+  "SETTINGS": {
+    "WORK_DURATION": "Durata lavoro",
+    "BREAK_DURATION": "Durata pausa",
+    "ROUNDS": "Ripetizioni",
+    "TIMER_IN_TITLE": "Abilita timer nel titolo",
+    "DARK_MODE": "Abilita modalità scura",
+    "RESET_SETTINGS": "Ripristina impostazioni"
+  }
+}

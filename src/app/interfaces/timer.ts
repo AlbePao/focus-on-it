@@ -1,6 +1,6 @@
 export enum TimerType {
-  WORK = 'Work',
-  BREAK = 'Break',
+  WORK = 'HOME.WORK',
+  BREAK = 'HOME.BREAK',
 }
 
 export enum TimerStatus {
