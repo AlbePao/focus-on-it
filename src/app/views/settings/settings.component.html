@@ -2,25 +2,49 @@
   <form [formGroup]="form">
     <div class="setting">
       <p class="label">Work Duration</p>
-      <mat-slider min="0" max="90" step="1" thumbLabel tickInterval="5" formControlName="workDuration"></mat-slider>
+      <mat-slider
+        min="0"
+        max="90"
+        step="1"
+        thumbLabel
+        tickInterval="5"
+        formControlName="workDuration"
+        aria-label="Work Duration"
+      ></mat-slider>
     </div>
     <div class="setting">
       <p class="label">Break Duration</p>
-      <mat-slider min="0" max="30" step="1" thumbLabel tickInterval="5" formControlName="breakDuration"></mat-slider>
+      <mat-slider
+        min="0"
+        max="30"
+        step="1"
+        thumbLabel
+        tickInterval="5"
+        formControlName="breakDuration"
+        aria-label="Break Duration"
+      ></mat-slider>
     </div>
     <div class="setting">
       <p class="label">Rounds</p>
-      <mat-slider min="0" max="10" step="1" thumbLabel tickInterval="1" formControlName="rounds"></mat-slider>
+      <mat-slider
+        min="0"
+        max="10"
+        step="1"
+        thumbLabel
+        tickInterval="1"
+        formControlName="rounds"
+        aria-label="Rounds"
+      ></mat-slider>
     </div>
 
     <mat-list>
       <mat-list-item>
-        <div mat-line>Timer in title</div>
-        <mat-slide-toggle formControlName="timerInTitleEnabled"></mat-slide-toggle>
+        <div mat-line>Enable timer in title</div>
+        <mat-slide-toggle formControlName="timerInTitleEnabled" aria-label="Enable timer in title"></mat-slide-toggle>
       </mat-list-item>
       <mat-list-item>
-        <div mat-line>Dark mode</div>
-        <mat-slide-toggle formControlName="darkModeEnabled"></mat-slide-toggle>
+        <div mat-line>Enable dark mode</div>
+        <mat-slide-toggle formControlName="darkModeEnabled" aria-label="Enable dark mode"></mat-slide-toggle>
       </mat-list-item>
     </mat-list>
   </form>

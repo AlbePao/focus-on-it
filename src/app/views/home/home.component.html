@@ -6,6 +6,7 @@
       [value]="currentSpinnerValue"
       [diameter]="320"
       [strokeWidth]="10"
+      aria-label="Timer progress"
     ></mat-progress-spinner>
 
     <div class="timer-status mat-display-4">
@@ -15,10 +16,16 @@
   </div>
 
   <div class="timer-buttons">
-    <button mat-fab color="accent" (click)="timerStopAction$.next()" [disabled]="isStopButtonDisabled">
+    <button
+      mat-fab
+      color="accent"
+      (click)="timerStopAction$.next()"
+      [disabled]="isStopButtonDisabled"
+      aria-label="Stop"
+    >
       <mat-icon svgIcon="stop"></mat-icon>
     </button>
-    <button mat-fab color="accent" (click)="toggleTimer()">
+    <button mat-fab color="accent" (click)="toggleTimer()" aria-label="Toggle timer">
       <mat-icon [svgIcon]="toggleIcon"></mat-icon>
     </button>
   </div>
