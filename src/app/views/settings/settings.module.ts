@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
+import { TranslateModule } from '@ngx-translate/core';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { SettingsComponent } from './settings.component';
 
@@ -12,12 +13,13 @@ import { SettingsComponent } from './settings.component';
   declarations: [SettingsComponent],
   imports: [
     CommonModule,
+    SettingsRoutingModule,
     ReactiveFormsModule,
     MatButtonModule,
     MatListModule,
     MatSlideToggleModule,
     MatSliderModule,
-    SettingsRoutingModule,
+    TranslateModule,
   ],
 })
 export class SettingsModule {}

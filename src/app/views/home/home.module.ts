@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TranslateModule } from '@ngx-translate/core';
 import { CountdownModule } from 'ngx-countdown';
 import { DialogAlertComponent } from './dialog-alert/dialog-alert.component';
 import { CanDeactivateHomeGuard } from './guards/can-deactivate-home.guard';
@@ -19,6 +20,7 @@ import { HomeComponent } from './home.component';
     MatDialogModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    TranslateModule,
     CountdownModule,
   ],
   providers: [CanDeactivateHomeGuard],

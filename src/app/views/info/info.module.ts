@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { InfoRoutingModule } from './info-routing.module';
 import { InfoComponent } from './info.component';
 
 @NgModule({
   declarations: [InfoComponent],
-  imports: [CommonModule, InfoRoutingModule],
+  imports: [CommonModule, InfoRoutingModule, TranslateModule],
 })
 export class InfoModule {}
