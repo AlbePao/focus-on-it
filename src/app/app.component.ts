@@ -8,14 +8,6 @@ import { routeAnimations } from './services/animations/route.animations';
 import { SettingsService } from './services/settings/settings.service';
 import { ThemeService } from './services/theme/theme.service';
 
-enum AppIcons {
-  info,
-  settings,
-  stop,
-  play_arrow,
-  pause,
-}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
