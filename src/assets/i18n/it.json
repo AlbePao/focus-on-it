@@ -19,7 +19,15 @@
     }
   },
   "INFO": {
-
+    "FOCUS_ON_IT": {
+      "TITLE": "Cos'è Focus on it?",
+      "DESCRIPTION": "Focus on it è un timer personalizzabile per la tecnica del pomodoro utilizzabile sia su browser desktop che mobile. Lo scopo di quest'app è aiutarti a concentrarti su qualunque compito su cui stai lavorando. Quest'app è ispirata alla tecnica del pomododo, un metodo di gestione del tempo sviluppato da Francesco Cirillo."
+    },
+    "POMODORO_TECHNIQUE": {
+      "TITLE": "Cos'è la tecnica del pomodoro?",
+      "DESCRIPTION": "La tecnica del pomodoro è un metodo per gestire il tempo sviluppato da Francesco Cirillo alla fine degli anni 1980. La tecnica utilizza un timer per suddividere il lavoro in intervalli, tradizionalmente lunghi 25 minuti, separati da brevi pause. Ogni intervallo è noto come “pomodoro”, riferendosi alla forma del timer da cucina a forma di pomodoro che Cirillo usava quando era uno studente universitario.",
+      "LINK": "https://it.wikipedia.org/wiki/Tecnica_del_pomodoro"
+    }
   },
   "SETTINGS": {
     "WORK_DURATION": "Durata lavoro",
