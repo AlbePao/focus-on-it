@@ -39,18 +39,14 @@
 
     <mat-list>
       <mat-list-item>
-        <div mat-line>{{ 'SETTINGS.TIMER_IN_TITLE' | translate }}</div>
-        <mat-slide-toggle
-          formControlName="timerInTitleEnabled"
-          [attr.aria-label]="'SETTINGS.TIMER_IN_TITLE' | translate"
-        ></mat-slide-toggle>
+        <mat-slide-toggle formControlName="timerInTitleEnabled">
+          {{ 'SETTINGS.TIMER_IN_TITLE' | translate }}
+        </mat-slide-toggle>
       </mat-list-item>
       <mat-list-item>
-        <div mat-line>{{ 'SETTINGS.DARK_MODE' | translate }}</div>
-        <mat-slide-toggle
-          formControlName="darkModeEnabled"
-          [attr.aria-label]="'SETTINGS.DARK_MODE' | translate"
-        ></mat-slide-toggle>
+        <mat-slide-toggle formControlName="darkModeEnabled">
+          {{ 'SETTINGS.DARK_MODE' | translate }}
+        </mat-slide-toggle>
       </mat-list-item>
     </mat-list>
   </form>
